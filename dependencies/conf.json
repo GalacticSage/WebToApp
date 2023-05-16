@@ -1,0 +1,18 @@
+{
+  "notion": {
+    "AppImage": "Notion-Linux-x86_64.AppImage",
+    "name": "notion",
+    "url": "https://notion.so",
+    "source": "notion-linux-x64",
+    "AppDir": "temp/notion-linux.AppDir",
+    "usr": "temp/notion-linux.AppDir/usr",
+    "bin": "temp/notion-linux.AppDir/usr/bin",
+    "dep_AppRun": "dependencies/notion-linux/AppRun",
+    "dep_desktop": "dependencies/notion-linux/notion-linux.desktop",
+    "AppRun": "temp/notion-linux.AppDir/AppRun",
+    "desktop": "temp/notion-linux.AppDir/notion-linux.desktop",
+    "url_icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fucarecdn.com%2Fe802143a-04a4-459d-a2d1-7f1b2667a578%2Fnotion-logo.png&f=1&nofb=1&ipt=6a331f2e7c40c6d6bf7ad3890f816d21bb28ffd049f736b43295480a0eff0022&ipo=images",
+    "icon1": "temp/notion-linux.AppDir/icon.png",
+    "icon2": "temp/notion-linux.AppDir/usr/bin/resources/app/icon.png"
+  }
+}

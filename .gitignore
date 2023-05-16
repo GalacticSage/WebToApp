@@ -1,3 +1,8 @@
+#WebToApp
+.idea
+*.AppImage
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

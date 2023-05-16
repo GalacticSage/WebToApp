@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Notion
+Exec=bin/notion
+Icon=icon
+Categories=Education;Office;ProjectManagement;WordProcessor;Documentation;
