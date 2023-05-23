@@ -1,5 +1,11 @@
 # WebToApp
-
+WebToApp is a Python script that allows you to easily convert a web application into a standalone desktop application using the Nativefier tool and package it as an AppImage. It simplifies the process of creating a desktop application from a web app by automating the necessary steps and providing a streamlined workflow.
+## Features
+- Converts web applications into standalone desktop applications.
+- Packages the application as an AppImage for easy distribution and execution on various Linux distributions.
+- Automatically sets up the required directory structure and dependencies.
+- Supports customization of the application name, icon, and other settings through a configuration file.
+- Optional cleaning and linting steps to ensure a clean and optimized AppImage package.
 ## Requirements
 
 - Linux operating system
@@ -73,3 +79,8 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 This project is licensed under the MIT License.
 
+## Disclaimer
+WebToApp is provided as-is without any warranty. Use it at your own risk.
+
+## Acknowledgements
+WebToApp is built upon the [Nativefier](https://github.com/nativefier/nativefier) tool and utilizes the [AppImage](https://github.com/AppImage/AppImageKit) ecosystem for packaging and distribution.
