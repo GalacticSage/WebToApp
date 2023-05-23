@@ -13,6 +13,7 @@
 
 ```
 git clone https://github.com/Johoski/WebToApp.git
+cd WebToApp
 ```
 
 2. Install the required dependencies:
