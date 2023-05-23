@@ -73,7 +73,15 @@ Available options:
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+Contributions are welcome! If you encounter any issues, have suggestions, or would like to add new features, please consider contributing to the project. You can contribute in the following ways:
+
+1. **Adding support for more websites**: You can help expand the capabilities of WebToApp by adding support for additional websites. Simply edit the conf.json file in the dependencies folder and include the necessary details for the web application you want to convert. Your contribution will enable others to convert a wider range of web apps into desktop applications.
+
+2. **Reporting issues**: If you come across any bugs, errors, or unexpected behavior while using WebToApp, please open an issue on the GitHub repository. Include as much detail as possible, such as the steps to reproduce the issue and any relevant error messages. This will help the development team investigate and address the problem effectively.
+
+3. **Submitting pull requests**: If you have made improvements, fixes, or new features to the script, you can submit a pull request. The team will review your changes and merge them into the main repository if they align with the project's goals and standards.
+
+Your contributions are highly appreciated and will help make WebToApp more versatile and user-friendly for everyone. Thank you for your support!
 
 ## License
 
