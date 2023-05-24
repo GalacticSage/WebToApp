@@ -5,17 +5,17 @@ import shutil
 import subprocess
 import requests
 from PIL import Image
-import optparse
+import argparse
 
-parser = optparse.OptionParser()
+parser = argparse.ArgumentParser()
 
 # import options
 
-parser.add_option('-a', '--app', help='Pass the app name')
-parser.add_option('--noclean', help='Dosnt clean the source and temp folder after building', action='store_true')
-parser.add_option('--lint', help='Lint the AppImage', action='store_true')
+parser.add_argument('-a', '--app', help='Pass the app name')
+parser.add_argument('--noclean', help='Dosnt clean the source and temp folder after building', action='store_true')
+parser.add_argument('--lint', help='Lint the AppImage', action='store_true')
 
-(opts, args) = parser.parse_args()  # instantiate parser
+args = parser.parse_args()  # instantiate parser
 
 # Common variables
 dependencies = 'dependencies'
@@ -35,7 +35,7 @@ def run_command_with_sudo(command):
 def read_json(file):
     with open(os.path.join(dependencies, file)) as f:
         conf = json.load(f)
-        app = conf[opts.app]
+        app = conf[args.app]
 
         name = app['name']
         AppImage = app['AppImage']
@@ -162,7 +162,7 @@ def createAppImage():
     run_command_with_sudo(permissions2)
 
 def clean():
-    if opts.noclean:
+    if args.noclean:
         print("\nCleaning:            SKIPPED")
     else:
         print("\nCleaning:            OK")
@@ -170,7 +170,7 @@ def clean():
         shutil.rmtree(source)
 
 def lint():
-    if opts.lint:
+    if args.lint:
         print("\nLinting:             OK")
         permissions = f'chmod +x {appimagelint}'
         run_command_with_sudo(permissions)
