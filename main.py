@@ -84,6 +84,7 @@ def check():
         response = requests.get(url_config)
         open(dep_config, "wb").write(response.content)
         is_dependencies = os.path.isdir(dependencies)
+        is_appimagetool = os.path.isdir(appimagetool)
         if is_appimagetool:
             print("AppImage Tool:       OK (Download successful)")
         else:
