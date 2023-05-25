@@ -20,7 +20,7 @@ args = parser.parse_args()  # instantiate parser
 # Common variables
 dependencies = 'dependencies'
 dep_config = 'dependencies/conf.json'
-url_config = "https://raw.githubusercontent.com/Johoski/WebToApp/dependencies_online/dependencies/conf.json"
+url_config = "https://raw.githubusercontent.com/Johoski/WebToApp/main/dependencies/conf.json"
 temp = 'temp'
 icon_size = 256
 arch = 'ARCH=x86_64'
