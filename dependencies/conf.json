@@ -7,6 +7,8 @@
     "AppDir": "temp/notion-linux.AppDir",
     "usr": "temp/notion-linux.AppDir/usr",
     "bin": "temp/notion-linux.AppDir/usr/bin",
+    "url_AppRun": "https://raw.githubusercontent.com/Johoski/WebToApp/main/dependencies/notion-linux/AppRun",
+    "url_desktop": "https://raw.githubusercontent.com/Johoski/WebToApp/main/dependencies/notion-linux/notion-linux.desktop",
     "dep_AppRun": "dependencies/notion-linux/AppRun",
     "dep_desktop": "dependencies/notion-linux/notion-linux.desktop",
     "AppRun": "temp/notion-linux.AppDir/AppRun",
