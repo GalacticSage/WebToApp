@@ -31,7 +31,13 @@ cd WebToApp
   ```
   pip install -r requirements.txt
   ```
+  
+- `npm`, `node.js` and `FUSE`:
 
+  ```
+  sudo apt install node npm fuse 
+  ```
+  
 - `nativefier`:
 
   ```
