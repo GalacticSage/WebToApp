@@ -83,8 +83,12 @@ def check():
         print("Dependencies:        FAILED (Downloading config)")
         response = requests.get(url_config)
         open(dep_config, "wb").write(response.content)
-        print("Dependencies:        FAILED (Please re-download the dependencies folder)")
-        exit()
+        is_dependencies = os.path.isdir(dependencies)
+        if is_appimagetool:
+            print("AppImage Tool:       OK (Download successful)")
+        else:
+            print("Dependencies:        FAILED (Please re-download the dependencies folder)")
+            exit()
 
     is_appimagetool = os.path.isfile(appimagetool)
     if is_appimagetool:
@@ -165,6 +169,7 @@ def copy_dependencies():
         os.system("cp " + dep_AppRun + " " + AppRun)
         os.system("cp " + dep_desktop + " " + desktop)
     else:
+        os.mkdir(dep)
         response = requests.get(url_AppRun)
         open(dep_AppRun, "wb").write(response.content)
         response = requests.get(url_desktop)
