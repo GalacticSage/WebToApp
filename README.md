@@ -9,7 +9,8 @@ WebToApp is a Python script that allows you to easily convert a web application 
 ## Requirements
 
 - Linux operating system
-- Python 3
+-  `Python3`
+-  `npm` and `node.js`
 - `nativefier` command-line tool
 - `appimagetool` and `appimagelint` binaries (downloaded automatically by script)
 - `FUSE` to run the AppImages
