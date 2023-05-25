@@ -19,6 +19,8 @@ args = parser.parse_args()  # instantiate parser
 
 # Common variables
 dependencies = 'dependencies'
+dep_config = 'dependencies/conf.json'
+url_config = "https://raw.githubusercontent.com/Johoski/WebToApp/dependencies_online/dependencies/conf.json"
 temp = 'temp'
 icon_size = 256
 arch = 'ARCH=x86_64'
@@ -33,7 +35,7 @@ def run_command_with_sudo(command):
 
 
 def read_json(file):
-    with open(os.path.join(dependencies, file)) as f:
+    with open(file) as f:
         conf = json.load(f)
         app = conf[args.app]
 
@@ -41,9 +43,12 @@ def read_json(file):
         AppImage = app['AppImage']
         url = app['url']
         source = app['source']
+        dep = app['dep']
         AppDir = app['AppDir']
         usr = app['usr']
         var_bin = app['bin']
+        url_AppRun = app['url_AppRun']
+        url_desktop = app['url_desktop']
         dep_AppRun = app['dep_AppRun']
         dep_desktop = app['dep_desktop']
         AppRun = app['AppRun']
@@ -52,7 +57,7 @@ def read_json(file):
         icon1 = app['icon1']
         icon2 = app['icon2']
 
-        return name, AppImage, url, source, AppDir, usr, var_bin, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2
+        return name, AppImage, url, source, dep, AppDir, usr, var_bin, url_AppRun, url_desktop, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2
 
 
 # checks if needed stuff is there
@@ -73,8 +78,18 @@ def check():
     if is_dependencies:
         print("Dependencies:        OK")
     else:
-        print("Dependencies:        FAILED (Please re-download the dependencies folder)")
-        exit()
+        print("Dependencies:        FAILED (Creating folder)")
+        os.mkdir(dependencies)
+        print("Dependencies:        FAILED (Downloading config)")
+        response = requests.get(url_config)
+        open(dep_config, "wb").write(response.content)
+        is_dependencies = os.path.isdir(dependencies)
+        is_appimagetool = os.path.isdir(appimagetool)
+        if is_appimagetool:
+            print("AppImage Tool:       OK (Download successful)")
+        else:
+            print("Dependencies:        FAILED (Please re-download the dependencies folder)")
+            exit()
 
     is_appimagetool = os.path.isfile(appimagetool)
     if is_appimagetool:
@@ -150,8 +165,18 @@ def set_icon():
 
 
 def copy_dependencies():
-    os.system("cp " + dep_AppRun + " " + AppRun)
-    os.system("cp " + dep_desktop + " " + desktop)
+    isdep_app = os.path.isfile(dep)
+    if isdep_app:
+        os.system("cp " + dep_AppRun + " " + AppRun)
+        os.system("cp " + dep_desktop + " " + desktop)
+    else:
+        os.mkdir(dep)
+        response = requests.get(url_AppRun)
+        open(dep_AppRun, "wb").write(response.content)
+        response = requests.get(url_desktop)
+        open(dep_desktop, "wb").write(response.content)
+        os.system("cp " + dep_AppRun + " " + AppRun)
+        os.system("cp " + dep_desktop + " " + desktop)
 
 def createAppImage():
     permissions = f'chmod +x {appimagetool}'
@@ -188,7 +213,7 @@ def finish():
 # run functions
 check()
 # read json
-name, AppImage, url, source, AppDir, usr, var_bin, dep_AppRun, dep_desktop, AppRun, desktop, url_icon, icon1, icon2 = read_json('conf.json')
+name, AppImage, url, source, dep, AppDir, usr, var_bin, url_AppRun, url_desktop, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2 = read_json(dep_config)
 createSource()
 createAppDir()
 copy_to_AppDir()
