@@ -167,7 +167,7 @@ def set_icon():
 
 
 def copy_dependencies():
-    isdep_app = os.path.isfile(dep)
+    isdep_app = os.path.isdir(dep)
     if isdep_app:
         os.system("cp " + dep_AppRun + " " + AppRun)
         os.system("cp " + dep_desktop + " " + desktop)
@@ -216,6 +216,10 @@ def finish():
 check()
 # read json
 name, AppImage, url, source, dep, AppDir, usr, var_bin, url_AppRun, url_desktop, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2 = read_json(dep_config)
+try:
+    clean()
+except:
+    pass
 createSource()
 createAppDir()
 copy_to_AppDir()

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Proton Mail
+Exec=bin/protonmail
+Icon=icon
+Terminal=false
+Categories=Network;Email;
