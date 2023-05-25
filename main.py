@@ -43,6 +43,7 @@ def read_json(file):
         AppImage = app['AppImage']
         url = app['url']
         source = app['source']
+        dep = app['dep']
         AppDir = app['AppDir']
         usr = app['usr']
         var_bin = app['bin']
@@ -56,7 +57,7 @@ def read_json(file):
         icon1 = app['icon1']
         icon2 = app['icon2']
 
-        return name, AppImage, url, source, AppDir, usr, var_bin, url_AppRun, url_desktop, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2
+        return name, AppImage, url, source, dep, AppDir, usr, var_bin, url_AppRun, url_desktop, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2
 
 
 # checks if needed stuff is there
@@ -159,8 +160,17 @@ def set_icon():
 
 
 def copy_dependencies():
-    os.system("cp " + dep_AppRun + " " + AppRun)
-    os.system("cp " + dep_desktop + " " + desktop)
+    isdep_app = os.path.isfile(dep)
+    if isdep_app:
+        os.system("cp " + dep_AppRun + " " + AppRun)
+        os.system("cp " + dep_desktop + " " + desktop)
+    else:
+        response = requests.get(url_AppRun)
+        open(dep_AppRun, "wb").write(response.content)
+        response = requests.get(url_desktop)
+        open(dep_desktop, "wb").write(response.content)
+        os.system("cp " + dep_AppRun + " " + AppRun)
+        os.system("cp " + dep_desktop + " " + desktop)
 
 def createAppImage():
     permissions = f'chmod +x {appimagetool}'
@@ -197,7 +207,7 @@ def finish():
 # run functions
 check()
 # read json
-name, AppImage, url, source, AppDir, usr, var_bin, url_AppRun, url_desktop, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2 = read_json(dep_config)
+name, AppImage, url, source, dep, AppDir, usr, var_bin, url_AppRun, url_desktop, dep_AppRun, dep_desktop, AppRun , desktop, url_icon, icon1, icon2 = read_json(dep_config)
 createSource()
 createAppDir()
 copy_to_AppDir()

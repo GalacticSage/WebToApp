@@ -4,6 +4,7 @@
     "name": "notion",
     "url": "https://notion.so",
     "source": "notion-linux-x64",
+    "dep": "dependencies/notion-linux",
     "AppDir": "temp/notion-linux.AppDir",
     "usr": "temp/notion-linux.AppDir/usr",
     "bin": "temp/notion-linux.AppDir/usr/bin",
